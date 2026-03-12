@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personal AI Assistant</title>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+display:flex;
+height:100vh;
+background:linear-gradient(135deg,#d7f3ff,#e8f0ff);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:250px;
+background:linear-gradient(180deg,#00c6ff,#0072ff);
+color:white;
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar button{
+margin:6px 0;
+padding:10px;
+border:none;
+border-radius:10px;
+background:rgba(255,255,255,0.2);
+color:white;
+cursor:pointer;
+}
+
+/* CHAT LIST */
+
+#chatList button{
+width:100%;
+text-align:left;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+
+.header{
+padding:15px;
+background:white;
+border-bottom:1px solid #ddd;
+font-weight:600;
+}
+
+/* CHAT AREA */
+
+#chat{
+flex:1;
+padding:25px;
+overflow-y:auto;
+
+background:linear-gradient(
+120deg,
+#d4fcff,
+#e6f0ff,
+#f0faff,
+#d4fcff
+);
+
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* MESSAGE BUBBLES */
+
+.user{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+color:white;
+padding:12px;
+border-radius:18px 18px 4px 18px;
+margin:10px;
+max-width:60%;
+margin-left:auto;
+}
+
+.ai{
+background:white;
+padding:12px;
+border-radius:18px 18px 18px 4px;
+margin:10px;
+max-width:60%;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* DELETE BUTTON */
+
+.deleteMsg{
+margin-left:10px;
+border:none;
+background:transparent;
+cursor:pointer;
+}
+
+/* INPUT */
+
+.input-area{
+display:flex;
+padding:15px;
+background:white;
+border-top:1px solid #ddd;
+}
+
+#userInput{
+flex:1;
+padding:14px;
+border-radius:25px;
+border:none;
+background:#f0f6ff;
+outline:none;
+}
+
+.send{
+margin-left:10px;
+padding:12px 20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>Assistant</h2>
+
+<button onclick="newChat()">+ New Chat</button>
+
+<div id="chatList"></div>
+
+<hr>
+
+<button onclick="renameChat()">Rename Chat</button>
+<button onclick="deleteCurrentChat()">Delete Chat</button>
+<button onclick="clearChat()">Clear Messages</button>
+
+</div>
+
+<div class="main">
+
+<div class="header">Personal AI Assistant</div>
+
+<div id="chat"></div>
+
+<div class="input-area">
+<input id="userInput" placeholder="Ask anything...">
+<button class="send" onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
